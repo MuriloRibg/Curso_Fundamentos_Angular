@@ -1,6 +1,1 @@
-<app-photo
-  url="https://media3.giphy.com/media/3o6gEgqmj8VpFdMxY4/200.webp?cid=ecf05e47ainfryod3p3xctx351u1z00cuwzuz96bppe1ijmn&rid=200.webp&ct=g"
-  alt="Michael Jodan"></app-photo>
-<app-photo
-  url="https://media0.giphy.com/media/uxTYtxv3Ezryg/200.webp?cid=ecf05e47ainfryod3p3xctx351u1z00cuwzuz96bppe1ijmn&rid=200.webp&ct=g"
-  alt="Michael Jodan"></app-photo>
+<app-photo *ngFor="let photo of photos" [url]="photo.url" [alt]="photo.alt"></app-photo>
