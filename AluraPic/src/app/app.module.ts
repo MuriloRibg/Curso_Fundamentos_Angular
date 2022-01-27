@@ -12,4 +12,5 @@ import { PhotosModule } from './photos/photos.module';
   providers: [],
   bootstrap: [AppComponent],
 })
+
 export class AppModule {}
