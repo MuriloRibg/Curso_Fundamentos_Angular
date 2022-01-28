@@ -10,6 +10,7 @@ import { PhotoService } from '../photo/photo.service';
 })
 export class PhotosListComponent implements OnInit {
   photos: Photo[] = [];
+  filter: string = '';
 
   //O constructor é destinado a injeção de dependência
   constructor(
@@ -21,10 +22,10 @@ export class PhotosListComponent implements OnInit {
   ngOnInit(): void {
     //pegando os parametros da url
     const userName = this.activatedRoute.snapshot.params['userName'];
-    console.log(userName);
 
     this.photoService.listFromUser(userName).subscribe((photos) => {
       this.photos = photos;
     });
   }
+
 }

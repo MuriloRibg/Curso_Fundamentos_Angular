@@ -1,0 +1,14 @@
+<div class="container divPhotos">
+  <ol class="list-unstyled">
+    <li *ngFor="let cols of rows" class="row">
+      <div *ngFor="let photo of cols" class="col-4 card m-3" style="width: 18rem;">
+        <div class="imgCard">
+          <app-photo [url]="photo.url" [alt]="photo.alt"></app-photo>
+        </div>
+        <div class="card-body">
+          <p class="card-text">{{photo.descricao}}</p>
+        </div>
+      </div>
+    </li>
+  </ol>
+</div>
