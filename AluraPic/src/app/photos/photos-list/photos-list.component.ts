@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+
 import { Photo } from '../photo/photo';
-import { PhotoService } from '../photo/photo.service';
 
 @Component({
   selector: 'app-photos-list',
@@ -11,21 +11,13 @@ import { PhotoService } from '../photo/photo.service';
 export class PhotosListComponent implements OnInit {
   photos: Photo[] = [];
   filter: string = '';
+  hasMore: boolean = true;
 
   //O constructor é destinado a injeção de dependência
-  constructor(
-    private photoService: PhotoService,
-    private activatedRoute: ActivatedRoute
-  ) {}
+  constructor(private activatedRoute: ActivatedRoute) {}
 
   //Qualquer inicialização posterior é feita no ngOnInit
   ngOnInit(): void {
-    //pegando os parametros da url
-    const userName = this.activatedRoute.snapshot.params['userName'];
-
-    this.photoService.listFromUser(userName).subscribe((photos) => {
-      this.photos = photos;
-    });
+    this.photos = this.activatedRoute.snapshot.data['photo'];
   }
-
 }
