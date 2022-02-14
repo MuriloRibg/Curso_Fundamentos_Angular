@@ -5,6 +5,7 @@ import { Pipe, PipeTransform } from '@angular/core';
   name: 'filterByDescription',
 })
 export class FilterByDescription implements PipeTransform {
+  //pegando o array de fotos, e o que o usuário digitou.
   transform(photos: Photo[], descriptionQuery: string) {
     descriptionQuery = descriptionQuery.trim().toLowerCase();
 

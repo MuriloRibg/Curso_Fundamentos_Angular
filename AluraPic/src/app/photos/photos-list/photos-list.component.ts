@@ -20,4 +20,14 @@ export class PhotosListComponent implements OnInit {
   ngOnInit(): void {
     this.photos = this.activatedRoute.snapshot.data['photo'];
   }
+
+  load() {
+    // this.photoService
+    //   .listFromUserPaginated(this.userName, ++this.currentPage)
+    //   .subscribe(photos => {
+    //     this.filter = '';
+    //     this.photos = this.photos.concat(photos);
+    //     if(!photos.length) this.hasMore = false;
+    //   });
+  }
 }
