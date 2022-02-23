@@ -2,21 +2,19 @@
   <div class="alert alert-light m-1" role="alert">
     <h4 class="text-center">Login</h4>
 
-    <form [formGroup]="loginForm" class="form mt-4">
+    <form [formGroup]="loginForm" class="form mt-4" (submit)="login()">
       <div class="form-group p-2">
-        <input
+        <input #userName
           formControlName="userName"
           type="text"
           class="form-control"
           placeholder="Nome de usuário"
           autofocus
         />
-
-        <small
-          class="text-danger d-block mt-2"
+        <app-vmessage
           *ngIf="loginForm.get('userName')?.errors?.['required']"
-          >O nome do usuário é obrigatório!</small
-        >
+          text="O nome do usuário é obrigatório!"
+        ></app-vmessage>
       </div>
 
       <div class="form-group p-2">
@@ -26,15 +24,20 @@
           class="form-control"
           placeholder="Senha"
         />
-        <small
+        <app-vmessage
           *ngIf="loginForm.get('password')?.errors?.['required']"
-          class="text-danger d-block mt-2"
-          >A senha é obrigatoria!
-        </small>
+          text="A senha é obrigatoria!"
+        ></app-vmessage>
       </div>
 
       <div class="d-grid gap-2 col-6 mx-auto p-2">
-        <button type="submit" class="btn btn-outline-primary">login</button>
+        <button
+          [disabled]="loginForm.invalid"
+          type="submit"
+          class="btn btn-primary"
+        >
+          login
+        </button>
       </div>
     </form>
     <div class="alert alert-info link" role="alert">
