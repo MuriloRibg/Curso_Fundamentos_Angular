@@ -28,8 +28,6 @@ export class SigninComponent implements OnInit {
   login(): void {
     const userName = this.loginForm.get('userName')?.value;
     const password = this.loginForm.get('password')?.value;
-    console.log(userName);
-    console.log(password);
 
     this.authService.authenticate(userName, password).subscribe(
       () => this.router.navigate(['user', userName]),

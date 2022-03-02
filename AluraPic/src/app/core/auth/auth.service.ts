@@ -23,7 +23,6 @@ export class AuthService {
           const authToken: string =
             'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJtdXJpbG9zLnJpYmVpcm8yMUBnbWFpbC5jb20iLCJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6Ik11cmlsbyIsImlhdCI6MTUxNjIzOTAyMn0.zeAUV3OACG5rpRPCA5oR5ma1Fg5dRmMDKhKVkrQ2HnY';
           this.userService.setToken(authToken);
-          console.log(authToken);
         })
       );
   }
