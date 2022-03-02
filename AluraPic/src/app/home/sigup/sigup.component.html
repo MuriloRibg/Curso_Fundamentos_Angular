@@ -2,7 +2,7 @@
   <div class="alert alert-light m-1" role="alert">
     <h4 class="text-center">Registre-se para abraçar um novo mundo!</h4>
 
-    <form class="form mt-4" [formGroup]="sigupForm">
+    <form class="form mt-4" [formGroup]="sigupForm" (submit)="sigup()">
       <div>
         <div class="form-group p-2">
           <input
@@ -20,7 +20,6 @@
             *ngIf="sigupForm.get('email')?.errors?.['email']"
             text="O valor do campo E-mail é inválido!"
           ></app-vmessage>
-
         </div>
 
         <div class="form-group p-2">
@@ -42,7 +41,6 @@
             *ngIf="sigupForm.get('fullName')?.errors?.['maxlength']"
             text="O campo Full Name deve possuir menos de 40 caracteres!"
           ></app-vmessage>
-
         </div>
 
         <div class="form-group p-2">
@@ -68,7 +66,14 @@
             *ngIf="sigupForm.get('userName')?.errors?.['lowercase']"
             text="O nome de usuário não pode ter letras maiúsculas"
           ></app-vmessage>
-
+          <app-vmessage
+            text="Nome de usuário já existe!"
+            *ngIf="sigupForm.get('userName')?.errors?.['userNameTaken']"
+          >
+          </app-vmessage>
+          <small *ngIf="sigupForm.get('userName')?.valid" class="text-success"
+            >User available</small
+          >
         </div>
 
         <div class="form-group p-2">
@@ -91,11 +96,15 @@
             *ngIf="sigupForm.get('password')?.errors?.['maxlength']"
             text="A senha deve possuir menos de 14 caracteres!"
           ></app-vmessage>
-
         </div>
 
         <div class="d-grid gap-2 col-6 mx-auto p-2">
-          <button class="btn btn-primary btn-block">Register</button>
+          <button
+            [disabled]="sigupForm.invalid || sigupForm.pending"
+            class="btn btn-primary btn-block"
+          >
+            Register
+          </button>
         </div>
 
         <div class="alert alert-info link" role="alert">

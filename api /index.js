@@ -15,5 +15,9 @@ app.post("/login", (req, res) => {
     res.status(201).end();
 })
 
+app.get("/login", (req, res) => {
+    res.status(201).end();
+})
+
 
 app.listen(porta, () => { console.log(`Servidor rodando na porta ${porta}`) })

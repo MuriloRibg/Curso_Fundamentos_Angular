@@ -1,6 +1,10 @@
+import { Router } from '@angular/router';
+import { SigUpService } from './sigup.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { lowerCaseValidator } from 'src/app/shared/components/validators/lower-case.validator';
+import { UserNotTakenValidationService } from './user-not-taken.validation.service';
+import { NewUser } from './new-user';
 
 @Component({
   templateUrl: './sigup.component.html',
@@ -9,7 +13,12 @@ import { lowerCaseValidator } from 'src/app/shared/components/validators/lower-c
 export class SigUpComponent implements OnInit {
   sigupForm!: FormGroup;
 
-  constructor(private formBuilder: FormBuilder) {}
+  constructor(
+    private formBuilder: FormBuilder,
+    private userNotTaken: UserNotTakenValidationService,
+    private sigupService: SigUpService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
     this.sigupForm = this.formBuilder.group({
@@ -30,6 +39,7 @@ export class SigUpComponent implements OnInit {
           Validators.minLength(2),
           Validators.maxLength(30),
         ],
+        [this.userNotTaken.checkUserNameTaken()],
       ],
       password: [
         '',
@@ -40,5 +50,13 @@ export class SigUpComponent implements OnInit {
         ],
       ],
     });
+  }
+
+  sigup() {
+    const newUser = this.sigupForm.getRawValue() as NewUser;
+    this.sigupService.sigup(newUser).subscribe(
+      () => this.router.navigateByUrl(''),
+      (err) => console.log(err)
+    );
   }
 }
