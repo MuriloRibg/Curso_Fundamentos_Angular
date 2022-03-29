@@ -64,8 +64,13 @@ class ImgController {
   }
 
   listarPorId(req, res) {
-    const FOTO = this.foto.filter((photo) => photo.id == Number(req.params.id))
-    return FOTO;
+    let fotoConf;    
+    this.foto.forEach((foto)=>{
+      if(Number(foto.id) == Number(req.params.id)){
+        return fotoConf = foto;
+      }    
+    })
+    return fotoConf;
   }
 }
 
