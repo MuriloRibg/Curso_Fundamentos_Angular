@@ -1,3 +1,6 @@
+import { PhotoDetailsComponent } from './photos/photo-details/photo-details.component';
+import { LoginGuard } from './core/auth/login.guard';
+import { AuthGuard } from './core/auth/auth.guard';
 import { RouterModule, Routes } from '@angular/router';
 import { NgModule } from '@angular/core';
 
@@ -22,8 +25,18 @@ const routes: Routes = [
     component: PhotosListComponent,
     resolve: { photo: PhotoListResolver },
   },
-  { path: 'p/add', component: PhotosFormComponent },
-  { path: '**', component: NotFoundComponent },
+  {
+    path: 'p/add',
+    component: PhotosFormComponent,
+  },
+  {
+    path: 'p/:photoId',
+    component: PhotoDetailsComponent,
+  },
+  {
+    path: '**',
+    component: NotFoundComponent
+  },
 ];
 
 @NgModule({
