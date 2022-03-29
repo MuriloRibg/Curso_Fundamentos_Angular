@@ -1,12 +1,13 @@
-<div class="bg-white border" *ngIf="photo$ | async as photo; else loading">
+<div class="bg-white border">
   <div class="row">
     <div class="col-lg-8">
-      <app-photo [url]="photo.url" [description]="photo.description"></app-photo>
+      <!-- <app-photo [url]="photo?.url ?? ''" [description]="photo?.description ?? ''"></app-photo> -->
+      <img class="img-thumbnail card-img-top imgCard" [src]="photo?.url ?? ''" [alt]="photo?.description ?? ''">
     </div>
 
     <div class="col-lg-4 p-4">
       <small>
-        <p class="text-left break-word">{{photo.description}}</p>
+        <p class="text-left break-word">{{photo?.description ?? ''}}</p>
         <hr>
       </small>
       <div class="mt-4">

@@ -7,17 +7,24 @@ import { Photo } from '../photo/photo';
 @Component({
   selector: 'app-photo-details',
   templateUrl: './photo-details.component.html',
-  styleUrls: ['./photo-details.component.scss'],
+  styleUrls: ['./photo-details.component.scss']
 })
 export class PhotoDetailsComponent implements OnInit {
-  photo$!: Observable<Photo>;
+
+  photo!: Photo;
 
   constructor(
     private route: ActivatedRoute,
     private photoService: PhotoService
-  ) {}
+    ) { }
 
   ngOnInit(): void {
-    this.photo$ = this.photoService.findById(this.route.snapshot.params['photoId']);
+    this.photoService
+        .findById(this.route.snapshot.params['photoId']).subscribe((photo)=> {
+          this.photo = photo
+          console.log(this.photo);
+        });
+
   }
+
 }

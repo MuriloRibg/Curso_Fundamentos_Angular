@@ -9,15 +9,14 @@ const CLOUD = 'http://localhost:3000/imgs/';
 })
 export class PhotoComponent implements OnInit {
   private _url = '';
-
   @Input() description = '';
 
   @Input() set url(url: string)  {
-    // if(!url.startsWith('data')) {
-    //     this._url = CLOUD + url;
-    // } else {
-    //     this._url = url;
-    // }
+    if(!url.startsWith('data')) {
+        this._url = CLOUD + url;
+    } else {
+        this._url = url;
+    }
     this._url = url
 }
 
