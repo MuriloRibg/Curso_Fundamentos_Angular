@@ -11,7 +11,10 @@ import { UserService } from '../user/user.service';
 export class HeaderComponent implements OnInit {
   user$!: Observable<User>;
 
-  constructor(private userService: UserService, private router: Router) {
+  constructor(
+    private userService: UserService,
+    private router: Router
+    ) {
     this.user$ = userService.getUser();
   }
 
