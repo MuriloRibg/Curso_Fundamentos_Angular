@@ -18,6 +18,16 @@ app.get("/foto/:id", (req, res) => {
     res.status(200).json(foto);
 })
 
+app.get("/photos/:id/comments", (req, res) => {
+    let imagem = new ImgController();
+    const comment = imagem.listarPorIdComments(req, res);
+    res.status(200).json(comment)
+})
+
+app.post("/photos/:id/comments", (req, res) => {    
+    res.status(201).end();
+})
+
 app.post("/login", (req, res) => {
     res.status(201).end();
 })
