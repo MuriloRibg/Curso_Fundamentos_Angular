@@ -12,13 +12,12 @@
 ```
 git clone https://github.com/MuriloRibg/Curso_Fundamentos_Angular.git
 cd Alurapic 
-Dowload dependencies -> npm i
-
- - After
+npm i
+```
+```
 cd ..
 cd Api  
-Dowload dependencies -> npm i
-
+npm i
 ```
 
 ### **- Development server**
