@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { VmessageComponent } from './vmessage.component';
+import { PhotoCommentsComponent } from './photo-comments.component';
 
-describe('VmessageComponent', () => {
-  let component: VmessageComponent;
-  let fixture: ComponentFixture<VmessageComponent>;
+describe('PhotoCommentsComponent', () => {
+  let component: PhotoCommentsComponent;
+  let fixture: ComponentFixture<PhotoCommentsComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ VmessageComponent ]
+      declarations: [ PhotoCommentsComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(VmessageComponent);
+    fixture = TestBed.createComponent(PhotoCommentsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
