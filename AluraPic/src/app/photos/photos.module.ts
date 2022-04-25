@@ -1,3 +1,4 @@
+import { ShowIfLoggedModule } from './../shared/directives/show-if-logged/show-if-logged.module';
 import { VmessageModule } from './../shared/components/vmessage/vmessage.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PhotosFormComponent } from './photos-form/photos-form.component';
@@ -17,6 +18,7 @@ import { FilterByDescription } from './photos-list/filter-by-description.pipe';
 import { SearchComponent } from './photos-list/search/search.component';
 import { CardModule } from '../shared/components/card/card.module';
 import { PhotoCommentsComponent } from './photo-details/photo-comments/photo-comments.component';
+import { PhotoOwnerOnlyDirective } from './photo-details/photo-owner-only/photo-owner-only.directive';
 
 @NgModule({
   declarations: [
@@ -29,6 +31,7 @@ import { PhotoCommentsComponent } from './photo-details/photo-comments/photo-com
     FilterByDescription,
     SearchComponent,
     PhotoCommentsComponent,
+    PhotoOwnerOnlyDirective
   ],
   imports: [
     CommonModule,
@@ -40,6 +43,7 @@ import { PhotoCommentsComponent } from './photo-details/photo-comments/photo-com
     ImmediateClickModule,
     DarkenOnHoverModule,
     CardModule,
+    ShowIfLoggedModule
   ],
   exports: [
     PhotoComponent,

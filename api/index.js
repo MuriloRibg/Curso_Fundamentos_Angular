@@ -36,5 +36,12 @@ app.get("/login", (req, res) => {
     res.status(201).end();
 })
 
+app.delete("/photos/:id", (req, res) => {
+    res.status(201).end();
+})
+
+app.post("/photo/:id/like", (req, res) => {
+    res.status(201).end();
+})
 
 app.listen(porta, () => { console.log(`Servidor rodando na porta ${porta}`) })

@@ -1,8 +1,9 @@
-import { PhotoComment } from './photo.comment';
-import { Observable } from 'rxjs';
-import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { environment } from 'src/environments/environment';
+import { HttpClient, HttpParams } from '@angular/common/http';
+import { catchError, map, Observable, of, throwError } from 'rxjs';
+
+import { environment } from 'src/environments/environment.prod';
+import { PhotoComment } from './photo.comment';
 import { Photo } from './photo';
 
 const API = environment.api;
@@ -21,7 +22,11 @@ export class PhotoService {
     return this.http.get<Photo[]>(API + '/' + userName + '/foto', { params });
   }
 
-  upload(description: string, allowComments: boolean, file: File): Observable<any> {
+  upload(
+    description: string,
+    allowComments: boolean,
+    file: File
+  ): Observable<any> {
     const formData = new FormData();
     formData.append('description', description);
     formData.append('allowComments', allowComments ? 'true' : 'false');
@@ -31,7 +36,7 @@ export class PhotoService {
   }
 
   findById(photoId: number): Observable<Photo> {
-    return this.http.get<Photo>(`${API}/foto/${photoId}`)
+    return this.http.get<Photo>(`${API}/foto/${photoId}`);
   }
 
   getComments(photoId: number): Observable<PhotoComment[]> {
@@ -39,10 +44,21 @@ export class PhotoService {
   }
 
   addCommment(photoId: Number, commentText: string) {
-    return this.http.post(`${API}/photos/${photoId}/comments`, {commentText});
+    return this.http.post(`${API}/photos/${photoId}/comments`, { commentText });
   }
 
   removePhoto(photoId: number): Observable<any> {
-    return this.http.delete(`${API}/photos/${photoId}`)
+    return this.http.delete(`${API}/photos/${photoId}`);
+  }
+
+  like(photoId: number): Observable<boolean> {
+    return this.http
+      .post(`${API}/photo/${photoId}/like`, {}, { observe: 'response' })
+      .pipe(
+        map((res) => true),
+        catchError((error) =>
+          error.status == '304' ? of(false) : throwError(error)
+        )
+      );
   }
 }

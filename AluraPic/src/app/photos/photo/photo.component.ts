@@ -1,7 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
 
-const CLOUD = 'http://localhost:3000/imgs/';
-
 @Component({
   selector: 'app-photo',
   templateUrl: './photo.component.html',
