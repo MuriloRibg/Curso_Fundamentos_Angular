@@ -1,3 +1,4 @@
+import { LoadingService } from './../../shared/components/loading/loading.service';
 import { PhotoService } from './../photo/photo.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
@@ -19,11 +20,13 @@ export class PhotosListComponent implements OnInit {
   //O constructor é destinado a injeção de dependência
   constructor(
     private activatedRoute: ActivatedRoute,
-    private photoService: PhotoService
+    private photoService: PhotoService,
+    private loadingService: LoadingService
   ) {}
 
   //Qualquer inicialização posterior é feita no ngOnInit
   ngOnInit(): void {
+    this.loadingService.start();
     this.activatedRoute.params.subscribe((params) => {
       this.userName = params['userName'];
       this.photos = this.activatedRoute.snapshot.data['photo'];

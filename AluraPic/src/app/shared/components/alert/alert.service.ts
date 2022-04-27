@@ -30,7 +30,7 @@ export class AlertService {
     this.alertSubject.next(new Alert(alertType, message));
   }
 
-  sucesse(message: string, keepAfterRouteChange: boolean = false) {
+  successe(message: string, keepAfterRouteChange: boolean = false) {
     this.alert(AlertType.SUCCESS, message, keepAfterRouteChange);
   }
 

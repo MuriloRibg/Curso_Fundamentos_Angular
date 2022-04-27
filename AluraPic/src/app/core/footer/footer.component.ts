@@ -4,7 +4,7 @@ import { Observable } from "rxjs";
 import { User } from "../user/user";
 
 @Component({
-    selector: 'ap-footer',
+    selector: 'app-footer',
     templateUrl: './footer.component.html'
 })
 export class FooterComponent implements OnInit {

@@ -6,7 +6,6 @@ import { AuthGuard } from '../core/auth/auth.guard';
 import { SigninComponent } from './signin/signin.component';
 import { SigUpComponent } from './sigup/sigup.component';
 
-
 const routes: Routes = [
   {
     path: '',
@@ -17,14 +16,19 @@ const routes: Routes = [
         path: '',
         component: SigninComponent,
         canActivate: [AuthGuard],
+        data: {
+          title: 'Sig in',
+        },
       },
       {
         path: 'sigup',
         component: SigUpComponent,
+        data: {
+          title: 'Sig up',
+        },
       },
     ],
   },
-
 ];
 
 @NgModule({

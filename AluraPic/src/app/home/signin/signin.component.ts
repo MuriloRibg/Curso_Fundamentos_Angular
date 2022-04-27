@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Title } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/core/auth/auth.service';
 
@@ -15,7 +16,7 @@ export class SigninComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private authService: AuthService,
-    private router: Router
+    private router: Router,
   ) {}
 
   ngOnInit(): void {
@@ -23,7 +24,7 @@ export class SigninComponent implements OnInit {
       userName: ['', Validators.required], //valor inicial, validação
       password: ['', Validators.required],
     });
-    this.userNameInput.nativeElement.focus()
+    this.userNameInput.nativeElement.focus();
   }
 
   login(): void {
