@@ -1,5 +1,4 @@
 # **Curso_Fundamentos_Angular** ![Bafge](https://img.shields.io/badge/Version-1.3.0-green) ![Bafge](https://img.shields.io/badge/Angular-13.1.0-blue)
->>>>>>> main
 
 <h4 align="center"> 
 	🚧 Application under construction... 🚀  🚧
