@@ -8,10 +8,18 @@ import { NgModule } from '@angular/core';
 import { HeaderComponent } from './header/header.component';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { RequestInterceptor } from './auth/request.interceptor';
+import { ShowIfLoggedModule } from '../shared/directives/show-if-logged/show-if-logged.module';
 
 @NgModule({
   declarations: [HeaderComponent, FooterComponent],
-  imports: [CommonModule, RouterModule, AlertModule, LoadingModule, MenuModule],
+  imports: [
+    CommonModule,
+    RouterModule,
+    AlertModule,
+    LoadingModule,
+    MenuModule,
+    ShowIfLoggedModule,
+  ],
   exports: [HeaderComponent, FooterComponent],
   providers: [
     {

@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  api: "http://suaAPI:3000",
+  api: "suaAPIaqui",
+  serverLog: "suaAPIaqui"
 };
 
 /*

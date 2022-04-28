@@ -1,4 +1,10 @@
-import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  ViewChild,
+  ElementRef,
+  AfterViewInit,
+} from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Title } from '@angular/platform-browser';
 import { Router } from '@angular/router';
@@ -9,14 +15,14 @@ import { AuthService } from 'src/app/core/auth/auth.service';
   templateUrl: './signin.component.html',
   styleUrls: ['./signin.component.scss'],
 })
-export class SigninComponent implements OnInit {
+export class SigninComponent implements OnInit, AfterViewInit {
   loginForm!: FormGroup;
   @ViewChild('userName') userNameInput!: ElementRef<HTMLInputElement>;
 
   constructor(
     private formBuilder: FormBuilder,
     private authService: AuthService,
-    private router: Router,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -24,6 +30,9 @@ export class SigninComponent implements OnInit {
       userName: ['', Validators.required], //valor inicial, validação
       password: ['', Validators.required],
     });
+  }
+
+  ngAfterViewInit(): void {
     this.userNameInput.nativeElement.focus();
   }
 
